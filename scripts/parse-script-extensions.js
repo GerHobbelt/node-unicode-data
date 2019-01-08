@@ -24,10 +24,12 @@ const parseScriptExtensions = function(version, scriptsMap) {
 	}
 	const lines = source.split('\n');
 	lines.forEach(function(line) {
+		line = line.trim();
 		if (!line || /^#/.test(line)) {
 			return;
 		}
-		const data = line.trim().split(';');
+
+		const data = line.split(';');
 		const charRange = data[0].replace('..', '-').trim();
 		const rangeParts = charRange.split('-');
 		const scripts = data[1].split('#')[0].trim().split(' ');
